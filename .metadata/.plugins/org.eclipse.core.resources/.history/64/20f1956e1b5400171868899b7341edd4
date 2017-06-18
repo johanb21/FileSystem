@@ -48,25 +48,12 @@ public class Directory extends FileComponent{
 
 	@Override
 	public void remove(FileComponent pFile) {
-		
 		try{
-			if(pFile instanceof File){
-				children.remove(pFile);
-				setSize(this.getSize() - pFile.getSize());
-			}
+			children.remove(pFile);
+			setModificationDate(getCurrentDate());
+			setSize(this.getSize() - pFile.getSize());
 			/**MAS COMPLICADO QUE ESTO
 			 * SE DEBE HACER BORRADO EN CASCADA**/
-			if(pFile instanceof Directory){
-				/*setSize(this.getSize() - pFile.getSize());
-				for(FileComponent child : children){
-					remove(child);
-				}
-				children.remove(pFile)*/
-			}
-			else throw new IllegalArgumentException();
-			
-			setModificationDate(getCurrentDate());
-			
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
