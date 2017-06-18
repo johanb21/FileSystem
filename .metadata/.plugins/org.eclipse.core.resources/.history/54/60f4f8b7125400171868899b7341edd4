@@ -8,9 +8,9 @@ public class FileSystem {
 	private String userID;
 	
 	public FileSystem(){
-		/*root = new Directory();
+		root = new Directory();
 		currentFile = null;
 		disk = new Disk();
-		userID = "USERID01";*/
+		userID = "USERID01";
 	}
 }
