@@ -22,13 +22,8 @@ public class PPT extends CommandAbstract{
 			ArrayList<FileComponent> elements = currentDir.getChildren();
 			String resultado = "Propiedades de "+fileName+":\n\n";
 			for(FileComponent element : elements){
-				if(element.getName().equals(fileName)){
+				if(element.getName().equals(fileName) || currentDir.getName().equals(fileName)){
 					resultado += element.toString();
-					JOptionPane.showMessageDialog(null, resultado, "Info de objeto", JOptionPane.INFORMATION_MESSAGE);
-					break;
-				}
-				if(currentDir.getName().equals(fileName)){
-					resultado = currentDir.toString();
 					JOptionPane.showMessageDialog(null, resultado, "Info de objeto", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}

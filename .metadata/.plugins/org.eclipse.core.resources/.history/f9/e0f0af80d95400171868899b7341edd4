@@ -76,13 +76,6 @@ public class File extends FileComponent{
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	@Override
-	public String toString() {
-		return ("Nombre: "+this.name+"\nExtension: "+getExtension()
-		+"\nTamaño: "+getSize()+" bytes\nUbicacion: "+getRoute()
-		+"\nCreacion: "+getCreationDate()+"\nUltima modificacion: "+getModificationDate());
-	}
 	
 	
 }

@@ -26,6 +26,7 @@ public class MFLE extends CommandAbstract{
 				if(element.getName().equals(fileName)){
 					File file = (File) element;
 					file.setContent(fileNewContent);
+					file.updateSizes(file.getSize(), fileNewContent.length());
 					JOptionPane.showMessageDialog(null, "Archivo modificado!");
 					break;
 				}

@@ -29,10 +29,6 @@ public class Main {
 			arg[1] = "ArchivoPrueba.pdf";
 			arg[2] = "Hola, estoy modificado.";
 			f1.waitCommand("MFLE", arg);
-			f1.waitCommand("VIEW", arg);
-			f1.waitCommand("PPT", arg);
-			arg[1] = "MyComputer";
-			f1.waitCommand("PPT", arg);
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "No sirvio...", "Error", JOptionPane.ERROR_MESSAGE);
 		}

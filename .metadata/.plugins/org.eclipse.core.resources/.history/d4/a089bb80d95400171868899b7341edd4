@@ -89,11 +89,4 @@ public class Directory extends FileComponent{
 	public boolean isDir(){
 		return true;
 	}
-	
-	@Override
-	public String toString() {
-		return ("Nombre: "+this.name+"\nElementos: "+this.children.size()
-		+"\nTamaño: "+getSize()+" bytes\nUbicacion: "+getRoute()
-		+"\nCreacion: "+getCreationDate()+"\nUltima modificacion: "+getModificationDate());
-	}
 }
