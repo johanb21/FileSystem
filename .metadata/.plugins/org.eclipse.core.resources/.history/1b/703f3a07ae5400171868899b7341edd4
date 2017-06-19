@@ -55,9 +55,4 @@ public class File extends FileComponent{
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
-	@Override
-	public boolean isFile(){
-		return true;
-	}
 }

@@ -15,22 +15,18 @@ public class Disk implements FileOutput{
 	public Disk(String pName, int pSectors, int pSectorSize){
 		name = pName;
 		sectors = pSectors;
-		sectorSize = pSectorSize;
+		sectorSize = sectorSize;
 		content = new ArrayList<String>();
 	}
 	
 	public void initDisk(){
-		if(content.size()==0){
-			String tempSector = "";
-			for(int i = 0; i < sectors;i++){
-				for(int j=0; j< sectorSize;j++){
-					tempSector += '0';
-				}
-				//tempSector += '\n';
-				content.add(tempSector);
-				tempSector = "";
+		String tempSector = "";
+		for(int i = 0; i < sectors;i++){
+			for(int j=0; j< sectorSize;j++){
+				tempSector += '0';
 			}
-			writeDiskFile(content);
+			//tempSector += '\n';
+			content.add(tempSector);
 		}
 	}
 	
@@ -122,7 +118,6 @@ public class Disk implements FileOutput{
 		    	writer.println(pContent.get(i));
 		    }
 		    writer.close();
-		    JOptionPane.showMessageDialog(null, "Archivo creado", "Exito", JOptionPane.INFORMATION_MESSAGE);
 		} catch (IOException e) {
 		   JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}

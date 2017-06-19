@@ -15,7 +15,7 @@ public class Disk implements FileOutput{
 	public Disk(String pName, int pSectors, int pSectorSize){
 		name = pName;
 		sectors = pSectors;
-		sectorSize = pSectorSize;
+		sectorSize = sectorSize;
 		content = new ArrayList<String>();
 	}
 	
@@ -28,7 +28,6 @@ public class Disk implements FileOutput{
 				}
 				//tempSector += '\n';
 				content.add(tempSector);
-				tempSector = "";
 			}
 			writeDiskFile(content);
 		}

@@ -28,7 +28,6 @@ public class Disk implements FileOutput{
 				}
 				//tempSector += '\n';
 				content.add(tempSector);
-				tempSector = "";
 			}
 			writeDiskFile(content);
 		}

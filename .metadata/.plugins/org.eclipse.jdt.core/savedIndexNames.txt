@@ -8,7 +8,6 @@ INDEX VERSION 1.127+C:\Users\Johan\Desktop\Proyecto3_SO\FileSystem\.metadata\.pl
 245730303.index
 1881185154.index
 3537799689.index
-1538186687.index
 4122227026.index
 4157321706.index
 1392172246.index
