@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.main" xmlns:intf="http://services.main" xmlns:tns1="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://main"/>
+   <element name="execCommand">
+    <complexType>
+     <sequence>
+      <element name="obj" type="tns1:BeanFileSystem"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="execCommandResponse">
+    <complexType>
+     <sequence>
+      <element name="execCommandReturn" type="tns1:BeanFileSystem"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="BeanFileSystem">
+    <sequence>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+     <element name="status" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="execCommandResponse">
+
+      <wsdl:part element="impl:execCommandResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="execCommandRequest">
+
+      <wsdl:part element="impl:execCommand" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FileSystem">
+
+      <wsdl:operation name="execCommand">
+
+         <wsdl:input message="impl:execCommandRequest" name="execCommandRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:execCommandResponse" name="execCommandResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FileSystemSoapBinding" type="impl:FileSystem">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="execCommand">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="execCommandRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="execCommandResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FileSystemService">
+
+      <wsdl:port binding="impl:FileSystemSoapBinding" name="FileSystem">
+
+         <wsdlsoap:address location="http://localhost:8080/FileSystemWS/services/FileSystem"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
