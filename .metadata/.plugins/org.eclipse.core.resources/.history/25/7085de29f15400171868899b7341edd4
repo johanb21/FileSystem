@@ -1,0 +1,12 @@
+package Commands;
+
+import Model.CommandAbstract;
+
+public class TREE extends CommandAbstract{
+
+	@Override
+	public void exec(String[] args) {
+		SimpleTree tree = new SimpleTree();
+	}
+
+}

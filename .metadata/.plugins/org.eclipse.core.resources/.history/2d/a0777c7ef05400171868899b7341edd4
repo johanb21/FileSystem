@@ -17,7 +17,7 @@ public class Main {
 			String arg[] = {f1.getuID(), "15", "10", "MyComputer"};
 			f1.waitCommand("CRT", arg);
 			JOptionPane.showMessageDialog(null, "CRT Existoso!", "LINDAA", JOptionPane.INFORMATION_MESSAGE);
-			/*arg[1] = "ArchivoPrueba";
+			arg[1] = "ArchivoPrueba";
 			arg[2] = "pdf";
 			arg[3] = "Hola";
 			f1.waitCommand("FLE", arg);
@@ -33,7 +33,6 @@ public class Main {
 			f1.waitCommand("PPT", arg);
 			arg[1] = "MyComputer";
 			f1.waitCommand("PPT", arg);
-			f1.waitCommand("TREE", arg);*/
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "No sirvio...", "Error", JOptionPane.ERROR_MESSAGE);
 		}

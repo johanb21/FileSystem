@@ -1,0 +1,78 @@
+package Commands;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+import javax.swing.*;
+import javax.swing.tree.*;
+
+import Model.Directory;
+import Model.FileComponent;
+import Model.FileSystem;
+
+public class SimpleTree extends JFrame {
+
+    public SimpleTree(FileSystem fs) {
+        super("FILE SYSTEM");
+        Container content = getContentPane();
+        N root = new N(fs.getRoot().getName());
+
+        makeTree(root, fs.getCurrentFile());
+        
+        N weapons = new N("Weapons").add(
+            new N("One-handed").add(
+                new N("Sword").add("Proficiency", "Specialization"), 
+                new N("Mace").add("Proficiency")),
+            new N("Bow").add("Proficiency"));
+        root.add(weapons);
+
+        N phys = new N("Physical & Mental").add(
+            new N("Life"),
+            new N("Strength").add(
+                "Double", "Triple", "Quadruple"));
+
+        root.add(phys);
+        N med = new N("Medical");
+        med.add(new N("Bind Wounds"));
+        med.add(new N("Set Broken Bones"));
+        root.add(med);
+
+        JTree tree = new JTree(root);
+        content.add(new JScrollPane(tree), BorderLayout.CENTER);
+        setSize(275, 300);
+        setVisible(true);
+    }
+
+    private class N extends DefaultMutableTreeNode {
+        public N(String s) { super(s); }
+        public N add(String... strs) {
+            for (String s : strs) {
+                super.add(new N(s));
+            }
+            return this;
+        }
+        public N add(N... ns) {
+            for (N n : ns) {
+                super.add(n);
+            }
+            return this;
+        }
+    }
+    
+    private void makeTree(N root, FileComponent current){
+    	if(current.isDir()){
+    		Directory dir = (Directory) current;
+    		ArrayList<FileComponent> children = dir.getChildren();
+    		for(FileComponent child : children){
+    			N temp = new N(child.getName());
+    			temp.add(new N(""));
+    			root.add(temp);
+    			makeTree(temp, child);
+    		}
+    	}
+    	if(current.isFile()){
+    		N temp = new N(current.getName());
+    		root.add(temp);
+    	}
+    }
+}
