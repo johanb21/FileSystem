@@ -31,7 +31,7 @@ public class Directory extends FileComponent{
 			route = current.getFather().getName()+'/'+route;
 			current = current.getFather();
 		}
-		route = "C:/"+route;
+		route = "C:/"+route; //"C" se podria cambiar por el nombre del disco
 		return route;
 	}
 
@@ -54,14 +54,14 @@ public class Directory extends FileComponent{
 				children.remove(pFile);
 				setSize(this.getSize() - pFile.getSize());
 			}
-			/**MAS COMPLICADO QUE ESTO
+			/**MAS COMPLICADO QUE ARCHIVOS
 			 * SE DEBE HACER BORRADO EN CASCADA**/
 			if(pFile instanceof Directory){
-				/*setSize(this.getSize() - pFile.getSize());
-				for(FileComponent child : children){
+				setSize(this.getSize() - pFile.getSize());
+				/*for(FileComponent child : children){
 					remove(child);
-				}
-				children.remove(pFile)*/
+				}*/
+				children.remove(pFile);
 			}
 			else throw new IllegalArgumentException();
 			

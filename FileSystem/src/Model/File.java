@@ -7,11 +7,17 @@ public class File extends FileComponent{
 	private String extension;
 	private String content;
 	
-	public File(String pExtension, String pContent){
+	public File(String pUID, String pName, String pExtension, String pContent,
+			FileComponent pFather){
 		super();
 		extension = pExtension;
 		content = pContent;
+		setuID(pUID);
+		setName(pName);
 		setSize(content.length());
+		setCreationDate(getCurrentDate());
+		setModificationDate(getCurrentDate());
+		setFather(pFather);
 	}
 	
 	@Override
@@ -49,5 +55,4 @@ public class File extends FileComponent{
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
 }

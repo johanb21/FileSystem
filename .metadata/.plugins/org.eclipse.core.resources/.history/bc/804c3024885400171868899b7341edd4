@@ -1,0 +1,22 @@
+package Commands;
+
+import java.nio.file.FileSystem;
+
+import Model.CommandAbstract;
+import Model.Main;
+
+public class CRT extends CommandAbstract{
+
+	@Override
+	public void exec(String[] args) {
+		String fsName = args[0];
+		
+		
+	}
+	
+	private FileSystem getFS(String fsName){
+		for(int i=0; i<Main.fs.size(); i++){
+			if(Main.fs)
+		}
+	}
+}

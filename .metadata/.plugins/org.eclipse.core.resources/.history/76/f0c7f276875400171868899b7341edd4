@@ -1,0 +1,12 @@
+package Model;
+
+public class CommandFactory {
+
+	public CommandFactory(){
+		
+	}
+	
+	public static void execCommand(Command pCommand, String[] args){
+		
+	}
+}

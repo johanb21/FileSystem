@@ -1,0 +1,13 @@
+package Model;
+
+import java.util.ArrayList;
+
+public class Main {
+
+	public static ArrayList<FileSystem> fs;
+	
+	public static void main(String[] args) {
+		fs = new ArrayList<FileSystem>();
+		
+	}
+}

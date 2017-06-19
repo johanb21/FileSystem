@@ -70,12 +70,14 @@ public class Disk implements FileOutput{
 	}
 	
 	public int getBlockSize(int pIndex, int pFileSize){
+		int size = pFileSize;
+		int index = pIndex;
 		int blockSize = 0;
-		while(pFileSize > 0){
+		while(size > 0){
 			if(sectorIsFree(pIndex)){
-				pFileSize -= sectorSize;
+				size -= sectorSize;
 				blockSize++;
-				pIndex++;
+				index++;
 			}else{
 				return -1; //No cabe en el bloque
 			}

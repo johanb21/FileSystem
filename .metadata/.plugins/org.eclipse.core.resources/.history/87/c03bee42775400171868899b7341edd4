@@ -1,0 +1,16 @@
+package Model;
+
+public class FileSystem {
+	private String uID;
+	private FileComponent root;
+	private FileComponent currentFile;
+	private Disk disk;
+	private String userID;
+	
+	public FileSystem(){
+		root = new Directory("FS001","MyComputer", null);
+		currentFile = null;
+		disk = new Disk("C", 15, 10);
+		userID = "USERID01";
+	}
+}
