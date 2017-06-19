@@ -13,12 +13,12 @@ import Model.FileSystem;
 public class LDIR extends CommandAbstract{
 
 	@Override
-	public void exec(String[] args) {
+	public String exec(String[] args) {
 		String fsID = args[0];
 		FileSystem fs = getFileSystem(fsID);
 		FileComponent currentDir = fs.getCurrentFile();
 		
-		String resultado = "\tContenido de "+currentDir.getName()+":\n\n";
+		String resultado = "Contenido de "+currentDir.getName()+":\n\n";
 		if(currentDir.isDir()){
 			Directory dir = (Directory) currentDir;
 			ArrayList<FileComponent> elements = dir.getChildren();
@@ -32,7 +32,7 @@ public class LDIR extends CommandAbstract{
 			}
 		}
 		
-		JOptionPane.showMessageDialog(null, resultado, "Exito", JOptionPane.INFORMATION_MESSAGE);
+		return resultado;
 	}
 
 }

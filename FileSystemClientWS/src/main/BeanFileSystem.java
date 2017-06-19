@@ -12,14 +12,18 @@ public class BeanFileSystem  implements java.io.Serializable {
 
     private boolean status;
 
+    private java.lang.String uid;
+
     public BeanFileSystem() {
     }
 
     public BeanFileSystem(
            java.lang.String mensaje,
-           boolean status) {
+           boolean status,
+           java.lang.String uid) {
            this.mensaje = mensaje;
            this.status = status;
+           this.uid = uid;
     }
 
 
@@ -62,6 +66,26 @@ public class BeanFileSystem  implements java.io.Serializable {
         this.status = status;
     }
 
+
+    /**
+     * Gets the uid value for this BeanFileSystem.
+     * 
+     * @return uid
+     */
+    public java.lang.String getUid() {
+        return uid;
+    }
+
+
+    /**
+     * Sets the uid value for this BeanFileSystem.
+     * 
+     * @param uid
+     */
+    public void setUid(java.lang.String uid) {
+        this.uid = uid;
+    }
+
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof BeanFileSystem)) return false;
@@ -77,7 +101,10 @@ public class BeanFileSystem  implements java.io.Serializable {
             ((this.mensaje==null && other.getMensaje()==null) || 
              (this.mensaje!=null &&
               this.mensaje.equals(other.getMensaje()))) &&
-            this.status == other.getStatus();
+            this.status == other.getStatus() &&
+            ((this.uid==null && other.getUid()==null) || 
+             (this.uid!=null &&
+              this.uid.equals(other.getUid())));
         __equalsCalc = null;
         return _equals;
     }
@@ -93,6 +120,9 @@ public class BeanFileSystem  implements java.io.Serializable {
             _hashCode += getMensaje().hashCode();
         }
         _hashCode += (getStatus() ? Boolean.TRUE : Boolean.FALSE).hashCode();
+        if (getUid() != null) {
+            _hashCode += getUid().hashCode();
+        }
         __hashCodeCalc = false;
         return _hashCode;
     }
@@ -114,6 +144,12 @@ public class BeanFileSystem  implements java.io.Serializable {
         elemField.setXmlName(new javax.xml.namespace.QName("http://main", "status"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
         elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("uid");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://main", "uid"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
     }
 

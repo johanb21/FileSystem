@@ -8,5 +8,6 @@
 package main.services;
 
 public interface FileSystem extends java.rmi.Remote {
-    public main.BeanFileSystem execCommand(String[] args) throws java.rmi.RemoteException;
+    public main.BeanFileSystem build() throws java.rmi.RemoteException;
+    public main.BeanFileSystem execCommand(java.lang.String uid, java.lang.String[] args) throws java.rmi.RemoteException;
 }

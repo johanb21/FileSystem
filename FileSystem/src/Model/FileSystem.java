@@ -1,19 +1,8 @@
 package Model;
 
-import Commands.CHDIR;
-import Commands.CPY;
-import Commands.CRT;
-import Commands.FLE;
-import Commands.LDIR;
-import Commands.MFLE;
-import Commands.MKDIR;
-import Commands.MOV;
-import Commands.PPT;
-import Commands.REM;
-import Commands.TREE;
-import Commands.VIEW;
-
 public class FileSystem {
+	public static FileSystem instance;
+	
 	public static int fileCounter = 0;
 	public static int dirCounter = 0;
 	
@@ -23,61 +12,64 @@ public class FileSystem {
 	public Disk disk;
 	private String userID;
 	
-	public FileSystem(String pUID){
-		uID = pUID;
-		/*root = new Directory("FS001","MyComputer", null);
-		currentFile = null;
-		disk = new Disk("C", 15, 10);
-		userID = "USERID01";*/
+	public static FileSystem getInstance(){
+		if(instance != null)
+			return instance;
+		return new FileSystem("");
 	}
 	
-	public void waitCommand(String command, String[]args){
+	public FileSystem(String pUID){
+		uID = pUID;
+		instance = this;
+	}
+	
+	public String waitCommand(String command, String[]args){
 		switch(command.toUpperCase()){
 			case "CRT":
-				execCommand(Command.CRT, args);
-				break;
+				return execCommand(Command.CRT, args);
+
 			case "FLE":
-				execCommand(Command.FLE, args);
-				break;
+				return execCommand(Command.FLE, args);
+
 			case "MKDIR":
-				execCommand(Command.MKDIR, args);
-				break;
+				return execCommand(Command.MKDIR, args);
+
 			case "CHDIR":
-				execCommand(Command.CHDIR, args);
-				break;
+				return execCommand(Command.CHDIR, args);
+
 			case "LDIR":
-				execCommand(Command.LDIR, args);
-				break;
+				return execCommand(Command.LDIR, args);
+
 			case "MFLE":
-				execCommand(Command.MFLE, args);
-				break;
+				return execCommand(Command.MFLE, args);
+
 			case "PPT":
-				execCommand(Command.PPT, args);
-				break;
+				return execCommand(Command.PPT, args);
+
 			case "VIEW":
-				execCommand(Command.VIEW, args);
-				break;
+				return execCommand(Command.VIEW, args);
+
 			case "CPY":
-				execCommand(Command.CPY, args);
-				break;
+				return execCommand(Command.CPY, args);
+
 			case "MOV":
-				execCommand(Command.MOV, args);
-				break;
+				return execCommand(Command.MOV, args);
+
 			case "REM":
-				execCommand(Command.REM, args);
-				break;
+				return execCommand(Command.REM, args);
+
 			case "TREE":
-				execCommand(Command.TREE, args);
-				break;
+				return execCommand(Command.TREE, args);
+
 			default:
-				break;
+				throw new IllegalArgumentException("No existe ningún comando válido para " + command);
 		}
 	}
 	
-	public void execCommand(Command pCommand, String[] args){
+	public String execCommand(Command pCommand, String[] args){
 		CommandFactory cmdFactory = new CommandFactory();
 		CommandAbstract com = cmdFactory.getCommand(pCommand, args);
-		com.exec(args);
+		return com.exec(args);
 	}
 
 	public String getuID() {

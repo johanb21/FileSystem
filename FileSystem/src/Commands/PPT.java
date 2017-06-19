@@ -12,7 +12,10 @@ import Model.FileSystem;
 public class PPT extends CommandAbstract{
 
 	@Override
-	public void exec(String[] args) {
+	public String exec(String[] args) {
+		
+		if(args.length < 2) throw new IllegalArgumentException("Cantidad insuficientes de argumentos");
+		
 		String fsID = args[0];
 		String fileName = args[1];
 		
@@ -24,18 +27,17 @@ public class PPT extends CommandAbstract{
 			for(FileComponent element : elements){
 				if(element.getName().equals(fileName)){
 					resultado += element.toString();
-					JOptionPane.showMessageDialog(null, resultado, "Info de objeto", JOptionPane.INFORMATION_MESSAGE);
-					break;
+					return resultado;
 				}
 				if(currentDir.getName().equals(fileName)){
 					resultado = currentDir.toString();
-					JOptionPane.showMessageDialog(null, resultado, "Info de objeto", JOptionPane.INFORMATION_MESSAGE);
-					break;
+					return resultado;
 				}
 			}
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			return "Error al abrir archivo";
 		}
+		return "Error al abrir archivo";
 		
 	}
 

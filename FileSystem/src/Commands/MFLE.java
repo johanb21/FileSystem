@@ -13,7 +13,7 @@ import Model.FileSystem;
 public class MFLE extends CommandAbstract{
 
 	@Override
-	public void exec(String[] args) {
+	public String exec(String[] args) {
 		String fsID = args[0];
 		String fileName = args[1];
 		String fileNewContent = args[2];
@@ -27,14 +27,15 @@ public class MFLE extends CommandAbstract{
 					File file = (File) element;
 					file.setContent(fileNewContent);
 					file.updateSizes(file.getSize(), fileNewContent.length());
-					JOptionPane.showMessageDialog(null, "Archivo modificado!");
-					break;
+					
+					return "Archivo modificado con éxito";
 				}
 			}
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			return "Error al modificar archivo";
 		}
 		
+		return "Error al modificar archivo";
 	}
 
 }

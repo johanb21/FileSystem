@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 
-  <!-- Services from FileSystemService WSDL service -->
+  <!-- Services from FileSystemWsService WSDL service -->
 
-  <service name="FileSystem" provider="java:RPC" style="wrapped" use="literal">
+  <service name="FileSystemWs" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://services.main"/>
-      <parameter name="wsdlServiceElement" value="FileSystemService"/>
+      <parameter name="wsdlServiceElement" value="FileSystemWsService"/>
       <parameter name="schemaQualified" value="http://services.main,http://main"/>
-      <parameter name="wsdlServicePort" value="FileSystem"/>
-      <parameter name="className" value="main.services.FileSystem"/>
-      <parameter name="wsdlPortType" value="FileSystem"/>
+      <parameter name="wsdlServicePort" value="FileSystemWs"/>
+      <parameter name="className" value="main.services.FileSystemWs"/>
+      <parameter name="wsdlPortType" value="FileSystemWs"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://services.main" xmlns:retNS="http://services.main" xmlns:rtns="http://main" name="build" qname="operNS:build" returnQName="retNS:buildReturn" returnType="rtns:BeanFileSystem" soapAction="">
-      </operation>
       <operation xmlns:operNS="http://services.main" xmlns:retNS="http://services.main" xmlns:rtns="http://main" name="execCommand" qname="operNS:execCommand" returnQName="retNS:execCommandReturn" returnType="rtns:BeanFileSystem" soapAction="">
-        <parameter xmlns:pns="http://services.main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:uid" type="tns:string"/>
         <parameter xmlns:pns="http://services.main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:args" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="execCommand build"/>
+      <parameter name="allowedMethods" value="execCommand"/>
 
       <typeMapping xmlns:ns="http://main" qname="ns:BeanFileSystem" type="java:main.BeanFileSystem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>

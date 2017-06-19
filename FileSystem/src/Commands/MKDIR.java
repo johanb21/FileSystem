@@ -10,7 +10,10 @@ import Model.FileSystem;
 public class MKDIR extends CommandAbstract{
 
 	@Override
-	public void exec(String[] args) {
+	public String exec(String[] args) {
+		
+		if(args.length < 2) throw new IllegalArgumentException("Cantidad insuficientes de argumentos");
+		
 		String fsID = args[0];
 		String dirName = args[1];
 		
@@ -19,7 +22,8 @@ public class MKDIR extends CommandAbstract{
 		FileComponent dir = new Directory(""+FileSystem.dirCounter+1, dirName, currentDir);
 		currentDir.add(dir);
 		FileSystem.dirCounter++;
-		JOptionPane.showMessageDialog(null, "Directorio creado", "ak7", JOptionPane.INFORMATION_MESSAGE);
+		
+		return "Directorio creado con éxito";
 	}
 
 }

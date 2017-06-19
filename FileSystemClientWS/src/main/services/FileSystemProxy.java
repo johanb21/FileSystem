@@ -44,10 +44,16 @@ public class FileSystemProxy implements main.services.FileSystem {
     return fileSystem;
   }
   
-  public main.BeanFileSystem execCommand(String[] args) throws java.rmi.RemoteException{
+  public main.BeanFileSystem build() throws java.rmi.RemoteException{
     if (fileSystem == null)
       _initFileSystemProxy();
-    return fileSystem.execCommand(args);
+    return fileSystem.build();
+  }
+  
+  public main.BeanFileSystem execCommand(java.lang.String uid, java.lang.String[] args) throws java.rmi.RemoteException{
+    if (fileSystem == null)
+      _initFileSystemProxy();
+    return fileSystem.execCommand(uid, args);
   }
   
   

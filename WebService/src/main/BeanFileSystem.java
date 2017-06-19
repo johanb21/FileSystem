@@ -8,6 +8,7 @@ public class BeanFileSystem implements Serializable{
 	
 	private boolean status;
 	private String mensaje;
+	private String uid;
 
 	public boolean getStatus() {
 		return status;
@@ -20,6 +21,12 @@ public class BeanFileSystem implements Serializable{
 	}
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	
 	

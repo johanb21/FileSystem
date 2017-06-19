@@ -13,5 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="/media/Storage/Documents/Google Drive/TEC/Semestre VII/SO/Proyecto3/FileSystemModel.jar"/>
+	<classpathentry kind="lib" path="FileSystemModel.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

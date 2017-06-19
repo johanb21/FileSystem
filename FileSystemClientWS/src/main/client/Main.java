@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import main.BeanFileSystem;
+import main.services.FileSystemWs;
 import main.services.FileSystem;
 import main.services.FileSystemProxy;
 
@@ -14,12 +15,14 @@ public class Main {
 		FileSystem filesystem = new FileSystemProxy("http://localhost:8080/FileSystemWS/services/FileSystem");
 
 		boolean exit = false;
+		boolean first = true;
+		BeanFileSystem obj;
+		String uid = "";
+		
 		Scanner scanner = new Scanner(System.in);
 
-		BeanFileSystem obj;
-		
 		printWelcome();
-
+		
 		while(!exit){
 			
 			System.out.print("> ");
@@ -31,13 +34,20 @@ public class Main {
 			}
 			
 			try {
-				obj = filesystem.execCommand(string2Array(newCommand));
+				
+				if(first){
+					uid = filesystem.build().getUid();
+					first = false;
+				}
+				
+				obj = filesystem.execCommand(uid, string2Array(newCommand));
 				
 				if(obj.getStatus()){
 					System.out.println(obj.getMensaje());
 				} else {
 					System.out.println(obj.getMensaje());
 				}
+				
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
@@ -49,6 +59,7 @@ public class Main {
 	}
 
 	private static String[] string2Array(String args){
+		String[] x = args.split(" ");
 		return args.split(" ");
 	}
 	

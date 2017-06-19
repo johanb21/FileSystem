@@ -33,10 +33,12 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="FileSystem" provider="java:RPC" style="wrapped" use="literal">
-  <ns3:operation name="execCommand" qname="ns1:execCommand" returnQName="ns1:execCommandReturn" returnType="ns2:BeanFileSystem" soapAction="" xmlns:ns1="http://services.main" xmlns:ns2="http://main" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
-   <ns3:parameter qname="ns1:obj" type="ns2:BeanFileSystem"/>
-  </ns3:operation>
-  <ns1:parameter name="allowedMethods" value="execCommand"/>
+  <ns3:operation name="build" qname="ns1:build" returnQName="ns1:buildReturn" returnType="ns2:BeanFileSystem" soapAction="" xmlns:ns1="http://services.main" xmlns:ns2="http://main" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:operation name="execCommand" qname="ns3:execCommand" returnQName="ns3:execCommandReturn" returnType="ns4:BeanFileSystem" soapAction="" xmlns:ns3="http://services.main" xmlns:ns4="http://main">
+   <ns1:parameter qname="ns3:uid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:args" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="execCommand build"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="FileSystem"/>
   <ns1:parameter name="className" value="main.services.FileSystem"/>
@@ -44,7 +46,7 @@
   <ns1:parameter name="schemaQualified" value="http://services.main,http://main"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://services.main"/>
   <ns1:parameter name="wsdlServiceElement" value="FileSystemService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:BeanFileSystem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.BeanFileSystem" xmlns:ns3="http://main"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:BeanFileSystem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.BeanFileSystem" xmlns:ns5="http://main"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

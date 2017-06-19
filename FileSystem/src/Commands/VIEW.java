@@ -13,7 +13,9 @@ import Model.FileSystem;
 public class VIEW extends CommandAbstract{
 
 	@Override
-	public void exec(String[] args) {
+	public String exec(String[] args) {
+		if(args.length < 2) throw new IllegalArgumentException("Cantidad insuficientes de argumentos");
+		
 		String fsID = args[0];
 		String fileName = args[1];
 		
@@ -26,12 +28,16 @@ public class VIEW extends CommandAbstract{
 				if(element.isFile() && element.getName().equals(fileName)){
 					File file = (File) element;
 					resultado = file.getContent();
-					JOptionPane.showMessageDialog(null, resultado, fileName, JOptionPane.INFORMATION_MESSAGE);
+					return resultado;
 				}
 			}
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			
 		}
+		
+		return "Error al abrir archivo";
+		
+		
 		
 	}
 
