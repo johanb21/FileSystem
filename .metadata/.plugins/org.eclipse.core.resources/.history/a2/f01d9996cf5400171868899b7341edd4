@@ -18,17 +18,17 @@ public class LDIR extends CommandAbstract{
 		FileSystem fs = getFileSystem(fsID);
 		FileComponent currentDir = fs.getCurrentFile();
 		
-		String resultado = "\tContenido de "+currentDir.getName()+":\n\n";
+		String resultado = "";
 		if(currentDir.isDir()){
 			Directory dir = (Directory) currentDir;
 			ArrayList<FileComponent> elements = dir.getChildren();
-			resultado += "Archivos:\n";
+			resultado = "Archivos:\n\n";
 			for(FileComponent element : elements){
-				if(element.isFile()) resultado+=element.getName()+"\n";
+				if(element.isFile()) resultado.concat(element.getName()+"\n");
 			}
-			resultado+="\nDirectorios:\n";
+			resultado.concat("\nDirectorios:\n\n");
 			for(FileComponent element : elements){
-				if(element.isDir()) resultado+=element.getName()+"\n";
+				if(element.isDir()) resultado.concat(element.getName()+"\n");
 			}
 		}
 		

@@ -60,22 +60,4 @@ public class File extends FileComponent{
 	public boolean isFile(){
 		return true;
 	}
-
-	public String getExtension() {
-		return extension;
-	}
-
-	public void setExtension(String extension) {
-		this.extension = extension;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-	
-	
 }

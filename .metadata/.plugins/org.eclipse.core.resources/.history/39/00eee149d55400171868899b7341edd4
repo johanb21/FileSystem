@@ -26,9 +26,6 @@ public class Main {
 			arg[1] = "Videos";
 			f1.waitCommand("MKDIR", arg);
 			f1.waitCommand("LDIR", arg);
-			arg[1] = "ArchivoPrueba.pdf";
-			arg[2] = "Hola, estoy modificado.";
-			f1.waitCommand("MFLE", arg);
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "No sirvio...", "Error", JOptionPane.ERROR_MESSAGE);
 		}

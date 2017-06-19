@@ -16,9 +16,8 @@ public class CRT extends CommandAbstract{
 		int sectorSize = Integer.parseInt(args[2]);
 		String rootName = args[3];
 		FileSystem fs =getFileSystem(fsID);
-		FileComponent root = new Directory(""+FileSystem.dirCounter+1, rootName, null);
+		FileComponent root = new Directory("1", rootName, null);
 		fs.setRoot(root);
-		FileSystem.dirCounter++;
 		fs.setCurrentFile(root);
 		fs.disk = new Disk("C", sectors, sectorSize);
 		fs.disk.initDisk();

@@ -17,12 +17,11 @@ public class FLE extends CommandAbstract{
 		String fileContent = args[3];
 		
 		FileSystem fs = getFileSystem(fsID);
-		FileComponent file = new File(""+FileSystem.fileCounter+1, fileName, fileExt, fileContent, fs.getCurrentFile());
+		FileComponent file = new File("1", fileName, fileExt, fileContent, fs.getCurrentFile());
 		FileComponent dir = fs.getCurrentFile();
 		boolean getsIn = fs.disk.bestFit(file);
 		if(getsIn){
 			dir.add(file);
-			FileSystem.fileCounter++;
 			JOptionPane.showMessageDialog(null, "Archivo", "LINDAA", JOptionPane.INFORMATION_MESSAGE);
 		}else JOptionPane.showMessageDialog(null, "Archivo alv :(", "Error", JOptionPane.ERROR_MESSAGE);
 	}

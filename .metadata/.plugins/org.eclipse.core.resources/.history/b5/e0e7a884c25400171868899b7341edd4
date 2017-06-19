@@ -51,7 +51,6 @@ public class Disk implements FileOutput{
 			content.set(pNumBlock, temp);
 			pNumBlock++;
 		}
-		writeDiskFile(content);
 	}
 	
 	public boolean bestFit(FileComponent pFile){
