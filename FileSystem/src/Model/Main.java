@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class Main {
 
@@ -10,8 +12,38 @@ public class Main {
 	
 	public static void main(String[] args) {
 		fs = new ArrayList<FileSystem>();
-		String id = "FS"+(fsCounter+1);
-		FileSystem f1 = new FileSystem(id);
+		try{
+			FileSystem f1 = addFileSystem();
+			String arg[] = {f1.getuID(), "15", "10", "MyComputer"};
+			f1.waitCommand("CRT", arg);
+			JOptionPane.showMessageDialog(null, "CRT Existoso!", "LINDAA", JOptionPane.INFORMATION_MESSAGE);
+			arg[1] = "ArchivoPrueba";
+			arg[2] = "pdf";
+			arg[3] = "Hola";
+			f1.waitCommand("FLE", arg);
+			arg[1] = "Momazos";
+			f1.waitCommand("MKDIR", arg);
+			arg[1] = "Videos";
+			f1.waitCommand("MKDIR", arg);
+			f1.waitCommand("LDIR", arg);
+			arg[1] = "ArchivoPrueba.pdf";
+			arg[2] = "Hola, estoy modificado.";
+			f1.waitCommand("MFLE", arg);
+			f1.waitCommand("VIEW", arg);
+			f1.waitCommand("PPT", arg);
+			arg[1] = "MyComputer";
+			f1.waitCommand("PPT", arg);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "No sirvio...", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 		
+	}
+	
+	public static FileSystem addFileSystem(){
+	 String id = "FS"+fsCounter+1;
+	 FileSystem flSys = new FileSystem(id);
+	 fs.add(flSys);
+	 fsCounter++;
+	 return flSys;
 	}
 }

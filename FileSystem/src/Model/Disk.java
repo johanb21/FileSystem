@@ -15,18 +15,22 @@ public class Disk implements FileOutput{
 	public Disk(String pName, int pSectors, int pSectorSize){
 		name = pName;
 		sectors = pSectors;
-		sectorSize = sectorSize;
+		sectorSize = pSectorSize;
 		content = new ArrayList<String>();
 	}
 	
 	public void initDisk(){
-		String tempSector = "";
-		for(int i = 0; i < sectors;i++){
-			for(int j=0; j< sectorSize;j++){
-				tempSector += '0';
+		if(content.size()==0){
+			String tempSector = "";
+			for(int i = 0; i < sectors;i++){
+				for(int j=0; j< sectorSize;j++){
+					tempSector += '0';
+				}
+				//tempSector += '\n';
+				content.add(tempSector);
+				tempSector = "";
 			}
-			//tempSector += '\n';
-			content.add(tempSector);
+			writeDiskFile(content);
 		}
 	}
 	
@@ -34,15 +38,20 @@ public class Disk implements FileOutput{
 		//...
 	}
 	
-	public void assignFile(FileComponent pFile){
-		boolean getsIn = bestFit(pFile);
-		if(getsIn){
-			//...
-			JOptionPane.showMessageDialog(null, "Archivo creado!", "Exito", JOptionPane.INFORMATION_MESSAGE);
-		}else{
-			//...
-			JOptionPane.showMessageDialog(null, "No hay espacio en disco para el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+	public void assignFile(FileComponent pFile, int pNumBlock){
+		String temp;
+		int size = pFile.getSize();
+		while(size>0){
+			temp = "";
+			for(int i=0; i<sectorSize; i++){
+				if(size>0) temp += pFile.getuID();	
+				else temp += '0';
+				size--;
+			}
+			content.set(pNumBlock, temp);
+			pNumBlock++;
 		}
+		writeDiskFile(content);
 	}
 	
 	public boolean bestFit(FileComponent pFile){
@@ -65,6 +74,9 @@ public class Disk implements FileOutput{
 			if(restOfMemFree(i)){
 				break;
 			}
+		}
+		if(getsIn){
+			assignFile(pFile, finalIndex);
 		}
 		return getsIn;
 	}
@@ -92,6 +104,7 @@ public class Disk implements FileOutput{
 			for(int i=0; i<sectorSize; i++){
 				if(sector.charAt(i) != '0'){
 					isFree = false;
+					break;
 				}
 			}
 		}catch(Exception e){
@@ -118,6 +131,7 @@ public class Disk implements FileOutput{
 		    	writer.println(pContent.get(i));
 		    }
 		    writer.close();
+		    JOptionPane.showMessageDialog(null, "Archivo creado", "Exito", JOptionPane.INFORMATION_MESSAGE);
 		} catch (IOException e) {
 		   JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}

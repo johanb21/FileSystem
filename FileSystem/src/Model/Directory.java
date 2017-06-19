@@ -18,6 +18,19 @@ public class Directory extends FileComponent{
 		this.setSize(1);
 	}
 	
+	
+	public ArrayList<FileComponent> getChildren() {
+		return children;
+	}
+
+
+
+	public void setChildren(ArrayList<FileComponent> children) {
+		this.children = children;
+	}
+
+
+
 	@Override
 	public String getName(){
 		return this.name;
@@ -70,5 +83,17 @@ public class Directory extends FileComponent{
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	
+	@Override
+	public boolean isDir(){
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return ("Nombre: "+this.name+"\nElementos: "+this.children.size()
+		+"\nTamaño: "+getSize()+" bytes\nUbicacion: "+getRoute()
+		+"\nCreacion: "+getCreationDate()+"\nUltima modificacion: "+getModificationDate());
 	}
 }

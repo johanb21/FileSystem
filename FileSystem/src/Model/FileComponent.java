@@ -73,4 +73,20 @@ public abstract class FileComponent {
 		}
 		return dateWithoutTime;
 	}
+	
+	public abstract String toString();
+	
+	public void updateSizes(int oldSize, int newSize){
+		FileComponent current = this;
+		current.setSize(newSize);
+		current.setModificationDate(getCurrentDate());
+		while(current.getFather() != null){
+			if(current.getFather()!= null){
+				int fatherSize = current.father.getSize();
+				current.father.setSize(fatherSize-oldSize+newSize);
+				current.father.setModificationDate(getCurrentDate());
+			}
+			current = current.getFather();
+		}
+	}
 }

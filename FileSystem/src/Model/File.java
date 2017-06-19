@@ -55,4 +55,34 @@ public class File extends FileComponent{
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	@Override
+	public boolean isFile(){
+		return true;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	@Override
+	public String toString() {
+		return ("Nombre: "+this.name+"\nExtension: "+getExtension()
+		+"\nTamaño: "+getSize()+" bytes\nUbicacion: "+getRoute()
+		+"\nCreacion: "+getCreationDate()+"\nUltima modificacion: "+getModificationDate());
+	}
+	
+	
 }
